@@ -1,11 +1,3 @@
-var counter;
-
-function init(){
-    counter = 0;
-}
-
-init();
-
 $("#add").on("click", addItem);
 
 function addItem(e){
@@ -27,14 +19,13 @@ function addItem(e){
             </button>
         </li>
     `;
-    counter++;
 }
 
 $("ul").on("click", ".del", removeItem);
 
 function removeItem(e){
     e.preventDefault();
-    console.log($(this).parent());
+
     $(this).parent().remove();
 }
 
@@ -44,10 +35,12 @@ function checkItem(e){
 
     e.preventDefault();
 
-    if(text.classList.contains('chec')){
-        text.classList.remove('chec');
+    var text = $(this);
+
+    if(text.parent().hasClass('chec')){
+        text.parent().removeClass('chec');
     }
     else{
-        text.classList.add('chec');
+        text.parent().addClass('chec');
     }
 }
